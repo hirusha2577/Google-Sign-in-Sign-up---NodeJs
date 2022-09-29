@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src='https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js'></script>
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src='https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js'></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src='https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js'></script>
+    <script src='https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js'></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src='https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js'></script>
+
+    <script type="text/javascript" src="/js/firebaseConfig.js"></script>
+    <script type="text/javascript" src="/js/authFuntion.js"></script>
+    <script type="text/javascript" src="/js/validationFuntion.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="signin_signup">
+            <button class="btn_sign_in_change" id="signIn">Sign In</button>
+            <button class="btn_sign_up_change" id="signUp">Sign Up</button>
+        </div>
+        <div class="sign_in" id="signInForm">
+            <form class="sign_in_form" action="#">
+                <input id="sign_in_email" class="sign_in_up_input" type="email" placeholder="Email" />
+                <input id="sign_in_password" class="sign_in_up_input" type="password" placeholder="Password" />
+                <a class="forgot_password" href="#">Forgot your password?</a>
+                <button class="btn_sign_in" onclick="sign_in(document.getElementById('sign_in_email').value,document.getElementById('sign_in_password').value)">Sign In</button>
+                <button class="google_sign_in_btn" onclick="singInWithGoogle()"> <img class="google_icon"
+                        src="/icon/google.png" alt=""> Sign in with Google</button>
+            </form>
+        </div>
+
+        <div class="sign_up" id="signUpForm">
+            <form class="sign_in_form" action="#">
+                <input id="sign_up_name" class="sign_in_up_input " type="text" placeholder="Name" />
+                <input id="sign_up_email" class="sign_in_up_input " type="email" placeholder="Email" />
+                <input id="sign_up_password" class="sign_in_up_input " type="password" placeholder="Password" />
+                <button class="btn_sign_up"
+                    onclick="sign_up(document.getElementById('sign_up_name').value,document.getElementById('sign_up_email').value,document.getElementById('sign_up_password').value)">Sign
+                    Up</button>
+            </form>
+        </div>
+
+    </div>
+
+
+
+    <script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+
+        const container_sign_up = document.getElementById('signUpForm');
+        const container_sign_in = document.getElementById('signInForm');
+
+        signUpButton.addEventListener('click', () => {
+            container_sign_up.style.visibility = 'visible';
+            container_sign_in.style.visibility = 'hidden';
+
+            signUpButton.classList.remove("btn_sign_up_change");
+            signInButton.classList.remove("btn_sign_in_change");
+            signUpButton.classList.add("btn_sign_up_change_click");
+            signInButton.classList.add("btn_sign_in_change_click");
+        });
+
+        signInButton.addEventListener('click', () => {
+            container_sign_in.style.visibility = 'visible';
+            container_sign_up.style.visibility = 'hidden';
+
+            signUpButton.classList.remove("btn_sign_up_change_click");
+            signInButton.classList.remove("btn_sign_in_change_click");
+            signUpButton.classList.add("btn_sign_up_change");
+            signInButton.classList.add("btn_sign_in_change");
+        });
+    </script>
+
+
+</body>
+
+</html>
